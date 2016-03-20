@@ -34,7 +34,7 @@
   0},
  {<<"node_package">>,
   {git,"git://github.com/dergraf/node_package.git",
-       {ref,"af02fd575ece6621ddd86ff58719119da18e39e2"}},
+       {ref,"b8a67613249b6d3cb25a36ce099b47fddff36e8c"}},
   0},
  {<<"parse_trans">>,{pkg,<<"parse_trans">>,<<"2.9.0">>},2},
  {<<"plumtree">>,
