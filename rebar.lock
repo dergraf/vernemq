@@ -41,7 +41,7 @@
  {<<"ranch">>,{pkg,<<"ranch">>,<<"1.2.1">>},0},
  {<<"rand_compat">>,
   {git,"git://github.com/tuncer/erlang-rand-compat.git",
-       {ref,"e58647dd3bb3e21829156786dba68a6a55b1b32d"}},
+       {ref,"dbaf898d3c7608b26dbf6fd677fb3dc6336aa9c3"}},
   0},
  {<<"recon">>,{pkg,<<"recon">>,<<"2.2.1">>},0},
  {<<"riak_dt">>,
