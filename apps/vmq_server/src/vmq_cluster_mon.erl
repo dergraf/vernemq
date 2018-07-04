@@ -67,6 +67,7 @@ init([]) ->
             %% is writing to it.
             _ = ets:new(vmq_status, [{read_concurrency, true}, public, named_table]),
             %% the event handler is added after the timeout
+            process_flag(trap_exit, true), %% we can unregister the event handler
             schedule_add_event_handler(0),
             {ok, #state{}};
         {error, Reason} ->
@@ -116,7 +117,6 @@ handle_cast(_Msg, State) ->
 %%--------------------------------------------------------------------
 handle_info(add_event_handler, State) ->
     vmq_peer_service:add_event_handler(vmq_cluster, []),
-    vmq_cluster:recheck(),
     {noreply, schedule_recheck(State)};
 handle_info({nodedown, Node}, State) ->
     lager:warning("cluster node ~p DOWN", [Node]),
@@ -130,7 +130,6 @@ handle_info({gen_event_EXIT, vmq_cluster, _}, State) ->
     schedule_add_event_handler(100), % give some time
     {noreply, State};
 handle_info(recheck, State) ->
-    vmq_cluster:recheck(),
     {noreply, schedule_recheck(State)}.
 
 
