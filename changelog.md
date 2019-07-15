@@ -1,5 +1,13 @@
 # Changelog
 
+- Fix message store startup consistency checking routine which resulted in
+  potentially deleting wrong messages in cases where an inconsistency was detected.
+  This fix also increases message storage performance during startup as well as
+  during normal operation. However, the nature of the bug and the provided solution
+  don't enable a simple downgrade path and introduces a backward incompatibility if
+  a VerneMQ message store containing offline messages has to be downgraded to 1.8.0
+  or earlier versions.
+
 ## VerneMQ 1.8.0
 
 - Cleanup cluster state information on a node which is being gracefully removed
